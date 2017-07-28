@@ -1,0 +1,190 @@
+    /* todo 加入Google font Roboto分別載入字重100,400,700 */
+    
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700');
+    /*------ note general ------*/
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    a,
+    li {
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    body {
+        background-color: #1E3C4B;
+        min-height: 1000px;
+        background-image: url(../img/cork-repeat.jpg);
+    }
+    
+    .card-wrapper {
+        /*透視,通常要大一點看起來比較真實*/
+        perspective: 1000px;
+    }
+    
+    .card {
+        width: 600px;
+        margin: 100px auto;
+    }
+    
+    .card>.upper-section,
+    .card>.lower-section {
+        padding: 20px 20px;
+        position: relative;
+    }
+    /*------ note fonts ------*/
+    
+    * {
+        color: #333;
+    }
+    
+    .dish-name {
+        font-size: 50px;
+        letter-spacing: 8px;
+        font-weight: 700;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        margin: 0;
+    }
+    
+    .section-title {
+        font-size: 24px;
+        font-weight: 100;
+        letter-spacing: 5px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+    /*------ note upper-section ------*/
+    
+    .upper-section {
+        background-color: white;
+        height: 220px;
+        z-index: 5;
+        color: white;
+        /*bgi*/
+        background-image: url(../img/salmon-steak.jpg);
+        /*照片符合目前的區域大小：bgs*/
+        background-size: cover;
+        /* todo 設定filter屬性控制照片明亮與飽和度,1：與原圖相同;亮+暗-*/
+        /*grayscale:飽和度,100%:黑白;0%：原圖*/
+        filter: brightness(1.1) grayscale(10%);
+        /*設定動畫:transform*/
+        transform: rotateX(25deg);
+        /*軸心調整至底部*/
+        transform-origin: bottom;
+    }
+    
+    .upper-section .text {
+        margin-top: 80px;
+    }
+    
+    .upper-section * {
+        color: white;
+    }
+    
+    .upper-section p {
+        margin: 0;
+    }
+    
+    .price {
+        margin-top: 15px;
+        font-style: italic;
+        font-size: 18px;
+        font-weight: 100;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        /*opacity：透明度,0：完全透明*/
+        opacity: 0;
+    }
+    
+    .price:before {
+        content: "$";
+        /*錢字號後留5px的空白*/
+        margin-right: 5px;
+    }
+    
+    .price:after {
+        content: "NTD";
+        margin-left: 5px;
+    }
+    /*------ note lower-section ------*/
+    
+    .lower-section {
+        background-color: white;
+        z-index: 1;
+        transform: rotateX(-100deg);
+        transform-origin: top;
+    }
+    
+    .ingredients {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .ingredients>li {
+        height: 40px;
+        font-size: 18px;
+        padding-left: 50px;
+        border-bottom: 1px dashed #dbdbdb;
+        position: relative;
+        /*垂直置中*/
+        height: 40px;
+        line-height: 40px;
+        position: relative;
+        /* 利用偽元素設計checklist點擊圖樣 */
+        cursor: pointer;
+    }
+    
+    .ingredients>li:before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border: 1px solid #dbdbdb;
+        display: block;
+        position: absolute;
+        left: 10px;
+        /*top:0；bottom:0--垂直置中*/
+        top: 0px;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+        border-radius: 5px;
+    }
+    
+    .ingredients>li.done {
+        text-decoration: line-through;
+    }
+    
+    .ingredients>li.done:before {
+        background-image: url(../img/checked.svg);
+        /*取消背景重複:bgr*/
+        background-repeat: no-repeat;
+        /*置中背景圖片_background-position:上下 左右*/
+        background-position: center center;
+    }
+    /*------ note animation ------*/
+    
+    .upper-section,
+    .lower-section,
+    .price {
+        transition: all 0.5s ease;
+    }
+    
+    .card:hover>.upper-section,
+    .card:hover>.lower-section {
+        transform: rotateX(0deg);
+        filter: brightness(1) grayscale(0%);
+    }
+    /*>後有一個空格：.card中不管隔幾層的.price都會被選到*/
+    
+    .card:hover .price {
+        opacity: 1;
+    }
+    /* todo 設計.card:hover動畫 */
+    /*class:card被碰觸的瞬間,角度會歸零*/
+    /* todo 設計.card:hover的3D動畫 */
+    /* note circle */
+    /* todo 設計底圖擴散圓圈特效動畫 */
