@@ -172,6 +172,8 @@
     .price {
         transition: all 0.5s ease;
     }
+    /* todo 設計.card:hover動畫 */
+    /*class:card被碰觸的瞬間,角度會歸零*/
     
     .card:hover>.upper-section,
     .card:hover>.lower-section {
@@ -183,8 +185,6 @@
     .card:hover .price {
         opacity: 1;
     }
-    /* todo 設計.card:hover動畫 */
-    /*class:card被碰觸的瞬間,角度會歸零*/
     /* todo 設計.card:hover的3D動畫 */
     /* note circle */
     /* todo 設計底圖擴散圓圈特效動畫 */
